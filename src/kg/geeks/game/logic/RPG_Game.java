@@ -9,17 +9,20 @@ public class RPG_Game {
     private static int roundNumber;
 
     public static void startGame() {
-        Boss boss = new Boss(2000, 50, "Tanos");
+        Boss boss = new Boss(2800, 50, "Tanos");
 
         Witcher witcher = new Witcher(350, 0,"Gerold");
         Thor thor = new Thor(280, 10,"Thor");
+        Hacker hack = new Hacker(250, 10, "Albert");
+        Druid druid = new Druid(240,10, "Skottal");
+        Samurai samurai = new Samurai(250, 15,"Yasuo");
         Warrior warrior = new Warrior(290, 10, "Herkules");
         Warrior warrior2 = new Warrior(270, 15, "Ahiles");
         Medic doc = new Medic(250, 5, 15, "Aibolit");
         Magic magic = new Magic(280, 20, 5, "Harry Potter");
         Berserk berserk = new Berserk(260, 10, "Guts");
         Medic assistant = new Medic(300, 5, 5, "Strange");
-        Hero[] heroes = {witcher, thor, warrior, warrior2, doc, magic, berserk, assistant};
+        Hero[] heroes = {samurai, hack, witcher, thor, druid, warrior, warrior2, doc, magic, berserk, assistant};
 
         printStatistics(boss, heroes);
         while (!isGameOver(boss, heroes)) {

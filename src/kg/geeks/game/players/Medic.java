@@ -3,6 +3,10 @@ package kg.geeks.game.players;
 public class Medic extends Hero {
     private int healPoints;
 
+    public void setHealPoints(int healPoints) {
+        this.healPoints = healPoints;
+    }
+
     public Medic(int health, int damage, int healPoints, String name) {
         super(health, damage, SuperAbility.HEAL, name);
         this.healPoints = healPoints;
