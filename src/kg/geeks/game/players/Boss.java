@@ -4,16 +4,23 @@ import kg.geeks.game.logic.RPG_Game;
 
 public class Boss extends GameEntity {
     private SuperAbility defence = SuperAbility.NONE;
+    private boolean stunned;
+
+    public boolean isStunned() {
+        return stunned;
+    }
+    public void setStunned(boolean stunned) {
+        this.stunned = stunned;
+    }
+    public void resetStun() {
+        stunned = false;
+    }
+
 
     public Boss(int health, int damage, String name) {
         super(health, damage, name);
     }
 
-    /*public void chooseDefence(Hero[] heroes) {
-        int randomIndex = RPG_Game.random.nextInt(heroes.length);
-        Hero hero = heroes[randomIndex];
-        this.defence = hero.getAbility();
-    }*/
     public void chooseDefence() {
         SuperAbility[] abilities = SuperAbility.values();
         int randomIndex = RPG_Game.random.nextInt(abilities.length - 1) + 1;
@@ -25,9 +32,7 @@ public class Boss extends GameEntity {
     }
 
     public void attack(Hero[] heroes) {
-        boolean coeff = RPG_Game.random.nextBoolean();
-        if (coeff) {
-            System.out.println("Thor stunned Boss!");
+        if (!isStunned()) {
             for (Hero hero : heroes) {
                 if (hero.getHealth() > 0) {
                     if (hero instanceof Berserk &&
@@ -40,6 +45,9 @@ public class Boss extends GameEntity {
                     }
                 }
             }
+        }
+        if (isStunned()) {
+            resetStun();
         }
     }
 

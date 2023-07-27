@@ -9,5 +9,10 @@ public class Thor extends Hero {
 
     @Override
     public void applySuperPower(Boss boss, Hero[] heroes) {
+        boolean chance = RPG_Game.random.nextBoolean();
+        if (chance) {
+            System.out.println("Thor stunned Boss!");
+            boss.setStunned(true);
+        }
     }
 }
